@@ -4,3 +4,6 @@
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 
 Website for a clinic
+
+**Dev status**
+Switch back to yew, so everything started again ☹️

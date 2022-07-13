@@ -1,2 +1,6 @@
 [serve]
 port = 8000
+
+# for website test
+[[proxy]]
+backend = "https://yew.rs/tutorial"

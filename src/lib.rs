@@ -1,143 +1,58 @@
-#![allow(clippy::wildcard_imports)]
-// TODO: Remove this line
-#![allow(unused)]
+mod components;
 
-use seed::{prelude::*, *};
+use reqwasm::http::Request;
+use yew::prelude::*;
+use self::components::{Video, VideosList, VideoDetails};
 
-// ------ ------
-//     Init
-// ------ ------
+#[function_component(App)]
+pub fn app() -> Html {
+    let videos = use_state(|| vec![]);
+    {
+        let videos = videos.clone();
+        use_effect_with_deps(move |_| {
+            let videos = videos.clone();
+            wasm_bindgen_futures::spawn_local(async move {
+                let fetched_videos: Vec<Video> = Request::get("/tutorial/data.json")
+                    .send()
+                    .await
+                    .unwrap()
+                    .json()
+                    .await
+                    .unwrap();
+                videos.set(fetched_videos);
+            });
 
-fn init(_: Url, _orders: &mut impl Orders<Msg>) -> Model {
-    todo!()
-}
+            || ()
+        },
+            ()
+        );
+    }
 
-// ------ ------
-//     Model
-// ------ ------
+    let selected_video = use_state(|| None);
 
-struct Model {
-    pages: Vec<Page>, // TODO: fix performance (`Indexmap`)
-    address_comp: Address,
-    contact_comp: PhoneNumber,
-    activated_item: ActivatedItem,
-    base_url: Url,
-}
+    let on_video_select = {
+        let selected_video = selected_video.clone();
+        Callback::from(move |video: Video| {
+            selected_video.set(Some(video))
+        })
+    };
 
-impl Default for Model {
-    fn default() -> Self {
-        Self {
-            pages: Vec::default(),
-            address_comp: Address::default(),
-            contact_comp: PhoneNumber::default(),
-            activated_item: ActivatedItem::default(),
-            base_url: Url::new(),
-        }
+    let details = selected_video.as_ref().map(|video| html! {
+        <VideoDetails video={video.clone()} />
+    });
+
+    html! {
+        <>
+            <h1>{ "RustConf Explorer" }</h1>
+            <div>
+                <h3>{"Videos to watch"}</h3>
+                <VideosList videos={(*videos).clone()} on_click={on_video_select.clone()} />
+            </div>
+            { for details }
+        </>
     }
 }
-
-struct Page {
-    id: ID,
-    title: String,
-    completed: bool,
-}
-
-enum ActivatedItem {
-    None,
-    Page(ActivePage),
-    Address(Address),
-    PhoneNumber(PhoneNumber),
-}
-
-impl Default for ActivatedItem {
-    fn default() -> Self {
-        Self::None
-    }
-}
-
-struct ActivePage {
-    id: ID,
-    title: String,
-    input_element: ElRef<web_sys::HtmlInputElement>,
-}
-
-struct Address {
-    input_element: ElRef<web_sys::HtmlInputElement>,
-}
-
-impl Default for Address {
-    fn default() -> Self {
-        todo!()
-    }
-}
-
-struct PhoneNumber {
-    input_element: ElRef<web_sys::HtmlInputElement>,
-}
-
-impl Default for PhoneNumber {
-    fn default() -> Self {
-        todo!()
-    }
-}
-
-type ID = i32;
-
-// ------ ------
-//    Update
-// ------ ------
-
-enum Msg {
-    UrlChanged(subs::UrlChanged),
-
-    SelectPage(ID),
-    LeavePage(ID),
-
-    SelectAddr,
-
-    SelectPhone,
-    UnselectPhone,
-}
-
-fn update(msg: Msg, model: &mut Model, orders: &mut impl Orders<Msg>) {
-    match msg {
-        Msg::UrlChanged(subs::UrlChanged(url)) => {
-            log!("UrlChanged", url);
-        }
-
-        Msg::SelectPage(id) => {
-            log!("SelectPage");
-        }
-        Msg::LeavePage(id) => {
-            log!("LeavePage");
-        }
-
-        Msg::SelectAddr => {
-            log!("SelectAddr");
-        }
-
-        Msg::SelectPhone => {
-            log!("SelectPhone");
-        }
-        Msg::UnselectPhone => {
-            log!("UnselectPhone");
-        }
-        _ => {}
-    }
-}
-
-// ------ ------
-//     View
-// ------ ------
-
-fn view(model: &Model) -> Node<Msg> {
-    div!["I'm a placeholder",]
-}
-
-// ------ ------
-//     Start
-// ------ ------
 
 pub fn start() {
-    //App::start("app", init, update, view);
+    yew::start_app::<App>();
 }
