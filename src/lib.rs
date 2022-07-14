@@ -17,5 +17,7 @@ pub fn app() -> Html {
 }
 
 pub fn start() {
+    console_error_panic_hook::set_once();
+    
     yew::start_app::<App>();
 }

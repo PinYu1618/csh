@@ -1,6 +1,15 @@
+[build]
+target = "index.html"
+dist = "dist"
+
 [serve]
 port = 8000
 
 # for website test
 [[proxy]]
 backend = "https://yew.rs/tutorial"
+
+[[hooks]]
+stage = "build"
+command = "sh"
+command_arguments = ["-c", "npx tailwindcss-cli build -i src/styles/tailwind.css -o $TRUNK_STAGING_DIR/tailwind.css"]

@@ -6,7 +6,7 @@ use yew::prelude::*;
 pub fn home() -> Html {
     html! {
         <>
-            <h1>{ "Home" }</h1>
+            <h1 class="text-center sm:text-left">{ "Home" }</h1>
         </>
     }
 }
