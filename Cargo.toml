@@ -18,10 +18,11 @@ path = "src/main.rs"
 [dependencies]
 console_error_panic_hook = "0.1.7"
 log = "0.4"
-wasm-logger = "0.2.0"
 reqwasm = "0.2"
 serde = { version = "1.0", features = ["derive"] }
 wasm-bindgen-futures = "0.4"
+wasm-logger = "0.2.0"
+yew-router = "0.16"
 
 [dependencies.yew]
 version = "0.19"

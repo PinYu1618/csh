@@ -5,5 +5,6 @@
 
 Website for a clinic
 
-**Dev status**
-Switch back to yew, so everything started again ☹️
+**WIP**
+
+Switch back to yew, so everything restarted (again) :-)
