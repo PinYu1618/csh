@@ -1,0 +1,14 @@
+{
+// This doesn't work :-(
+//    "emmet.includeLanguages": {
+//        "rust": "html",
+//        "*.rs": "html",
+//    },
+    "files.associations": {
+        "*.css": "tailwindcss",
+        "*.rs": "rust",
+    },
+    "tailwindCSS.includeLanguages": {
+        "rust": "html",
+    },
+}

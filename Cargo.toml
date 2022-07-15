@@ -1,10 +1,10 @@
 [package]
-name = "clinic"
+name = "csh"
 version = "0.1.0"
 edition = "2021"
 authors = ["PinYu1618 <pycc1618@gmail.com>"]
 license = "LICENSE"
-default-run = "clinic_bin"
+default-run = "csh_bin"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -12,7 +12,7 @@ default-run = "clinic_bin"
 crate-type = ["cdylib", "rlib"]
 
 [[bin]]
-name = "clinic_bin"
+name = "csh_bin"
 path = "src/main.rs"
 
 [dependencies]

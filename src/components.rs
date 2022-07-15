@@ -1,3 +1,7 @@
+mod nav;
+
+pub use self::nav::Nav;
+
 mod video;
 mod video_list;
 

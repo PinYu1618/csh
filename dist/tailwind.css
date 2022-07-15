@@ -590,8 +590,25 @@ video {
   display: none;
 }
 
-.static {
-  position: static;
+*, ::before, ::after {
+  --tw-border-opacity: 1;
+  border-color: rgba(229, 231, 235, var(--tw-border-opacity));
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.border {
+  border-width: 1px;
 }
 
 .text-center {
@@ -599,6 +616,10 @@ video {
 }
 
 @media (min-width: 640px) {
+  .sm\:flex-row {
+    flex-direction: row;
+  }
+
   .sm\:text-left {
     text-align: left;
   }

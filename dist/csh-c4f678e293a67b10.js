@@ -631,16 +631,16 @@ function getImports() {
     imports.wbg.__wbindgen_throw = function(arg0, arg1) {
         throw new Error(getStringFromWasm0(arg0, arg1));
     };
-    imports.wbg.__wbindgen_closure_wrapper9815 = function(arg0, arg1, arg2) {
-        const ret = makeClosure(arg0, arg1, 545, __wbg_adapter_24);
+    imports.wbg.__wbindgen_closure_wrapper10497 = function(arg0, arg1, arg2) {
+        const ret = makeClosure(arg0, arg1, 627, __wbg_adapter_24);
         return addHeapObject(ret);
     };
-    imports.wbg.__wbindgen_closure_wrapper11284 = function(arg0, arg1, arg2) {
-        const ret = makeMutClosure(arg0, arg1, 553, __wbg_adapter_27);
+    imports.wbg.__wbindgen_closure_wrapper11966 = function(arg0, arg1, arg2) {
+        const ret = makeMutClosure(arg0, arg1, 635, __wbg_adapter_27);
         return addHeapObject(ret);
     };
-    imports.wbg.__wbindgen_closure_wrapper11437 = function(arg0, arg1, arg2) {
-        const ret = makeMutClosure(arg0, arg1, 574, __wbg_adapter_30);
+    imports.wbg.__wbindgen_closure_wrapper12119 = function(arg0, arg1, arg2) {
+        const ret = makeMutClosure(arg0, arg1, 656, __wbg_adapter_30);
         return addHeapObject(ret);
     };
 
@@ -676,7 +676,7 @@ function initSync(bytes) {
 
 async function init(input) {
     if (typeof input === 'undefined') {
-        input = new URL('clinic-6c692a8a46532a64_bg.wasm', import.meta.url);
+        input = new URL('csh-c4f678e293a67b10_bg.wasm', import.meta.url);
     }
     const imports = getImports();
 
