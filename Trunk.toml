@@ -12,4 +12,4 @@ backend = "https://yew.rs/tutorial"
 [[hooks]]
 stage = "build"
 command = "sh"
-command_arguments = ["-c", "npx tailwindcss-cli build -i src/styles/tailwind.css -o $TRUNK_STAGING_DIR/tailwind.css"]
+command_arguments = ["-c", "npx tailwindcss-cli build -i src/input.css -o $TRUNK_STAGING_DIR/output.css"]

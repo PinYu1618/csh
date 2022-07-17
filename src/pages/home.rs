@@ -1,17 +1,15 @@
-//! TODO: Modify it to real content
-
 use yew::prelude::*;
-
-use crate::components::Nav;
-
+use crate::components::*;
 
 #[function_component(Home)]
 pub fn home() -> Html {
     html! {
-        <>
-            <h1 class="text-center sm:text-left">{ "Shih Hong Chen" }</h1>
-            <h2>{ "A human." }</h2>
+        <div class="container">
+            <div class="container pt-48 pb-48">
+                <Title />
+                <Subtitle />
+            </div>
             <Nav />
-        </>
+        </div>
     }
 }

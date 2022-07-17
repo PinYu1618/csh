@@ -3,6 +3,9 @@ use yew_router::{prelude::*};
 
 use crate::route::Route;
 
+#[derive(PartialEq, Properties)]
+pub struct NavProps {}
+
 #[function_component(Nav)]
 pub fn nav() -> Html {
     let history = use_history().unwrap();
@@ -11,7 +14,7 @@ pub fn nav() -> Html {
         let history = history.clone();
         let onclick = Callback::once(move |_| history.push(Route::About));
         html! {
-            <button class="border" {onclick}>{"About"}</button>
+            <button class="shadow-csh-button h-button w-button rounded-full" {onclick}>{"About"}</button>
         }
     };
 
@@ -19,7 +22,7 @@ pub fn nav() -> Html {
         let history = history.clone();
         let onclick = Callback::once(move |_| history.push(Route::Contact));
         html! {
-            <button {onclick}>{"Contact"}</button>
+            <button class="shadow-csh-button h-button w-button rounded-full" {onclick}>{"Contact"}</button>
         }
     };
 
@@ -32,7 +35,7 @@ pub fn nav() -> Html {
     };
 
     html! {
-        <div class="flex gap-4 flex-col sm:flex-row">
+        <div class="flex gap-4 flex-col container items-center pb-10">
             {go_to_about_button}
             {go_to_contact_button}
             {go_to_demo_button}
